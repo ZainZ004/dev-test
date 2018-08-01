@@ -45,3 +45,6 @@ class IO(object):
                 raise TypeError(word['none'])
         else:
             raise FileExistsError(word['FileNotFound'])
+    def report(self=None):
+        file = IO.choose()
+        Files.search_in_file(Files.check_data(None,file))

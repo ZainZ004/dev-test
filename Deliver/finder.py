@@ -1,6 +1,5 @@
 import glob
 import xlrd
-from output import IO
 
 
 class Files(object):
@@ -13,7 +12,7 @@ class Files(object):
                 files.insert(0, filess)
         return files
 
-    def check_data(self=None, file=IO.choose):
+    def check_data(self=None, file=''):
         havedata=[]
         data = xlrd.open_workbook(file)
         for search_sheets in range(data.nsheets):
@@ -27,8 +26,8 @@ class Files(object):
             except:
                 continue
         if len(havedata) < 1:
-            return 'Error'
+            raise FileNotFoundError('No data')
         return havedata
 
-    def search_in_file(self=None,search_sheet=Files.check_data,search_word='姓名'):
+    def search_in_file(self=None,search_sheet=None,search_word='姓名'):
         pass        
